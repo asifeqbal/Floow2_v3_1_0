@@ -121,12 +121,12 @@
 		alert('baal');
 			document.addEventListener("resume", onResume, false);
 			
-			var push = PushNotification.init({ "android": {"senderID": "560922606646"},
+			var push = PushNotification.init({ "android": {"senderID": "114063791200"},
 			"ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
 
 			push.on('registration', function(data) {
 				deviceId = data.registrationId;
-			//	alert('id:' +  deviceId );	
+				alert('id:' +  deviceId );	
 				getPosition();				
 			}); 
 			
