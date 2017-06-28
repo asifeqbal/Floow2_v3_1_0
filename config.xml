@@ -2,10 +2,10 @@
 <widget id="com.robhaenen.floow2" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Floow2</name>
     <description>
-        Push sample application that receives push notifications.
+        FLOOW2 World's reset button
     </description>
     <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+        FLOOW2 Team
     </author>
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
