@@ -81,44 +81,33 @@
 
 		window.addEventListener("message", receiveMessage, false);
 
-		function getPosition() {
-			var options = {
-				enableHighAccuracy: true,
-				maximumAge: 3600000
-			}
+		function getLanguage() {
+	
+			   navigator.globalization.getPreferredLanguage(onSuccess, onError);
 
-			var watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
-		}
-		
-		function onSuccess(position) {
-			if(flag){
-				if(notificationFlag){						
-				
+			   function onSuccess(language) {
+				  alert('language: ' + language.value + '\n');
+				  var lang = language.value;
+					var res = lang.split("-");
+						if(res[0] == 'nl'){
+							//document.getElementById('container-frame').src = 'http://www.floow2.com/floow2-nl-mobiel.html';
+						}else{
+							document.getElementById('container-frame').src = 'http://www.floow2.com/fl2-en-mobile.html';
+						}
+			   }
+
+			   function onError(){
+			   	   alert('Error getting language\n');
+				   document.getElementById('container-frame').src = 'http://www.floow2.com/floow2-nl-mobiel.html';
+			   }
 			
-					document.getElementById('container-frame').src = 'https://app.roootsj.com/index.php?lat='+position.coords.latitude+'&lon='+position.coords.longitude+'&devType=Android&deviceId='+deviceId;
-				}
-				else{
-					document.getElementById('container-frame').src = 'https://app.roootsj.com/index.php?lat='+position.coords.latitude+'&lon='+position.coords.longitude;
-				}
-				flag = false;
-			}
-		}
-
-		function onError(error) {
-			if(flag){
-				if(notificationFlag){
-					document.getElementById('container-frame').src = 'https://app.roootsj.com/index.php?devType=Android&deviceId='+deviceId;
-				}
-				else{
-					document.getElementById('container-frame').src = 'https://app.roootsj.com';
-				}
-				flag = false;
-			}
+			
 		}
 		
 
 		function onDeviceReady(){
 		alert('baal');
+		
 			document.addEventListener("resume", onResume, false);
 			
 			var push = PushNotification.init({ "android": {"senderID": "114063791200"},
@@ -127,12 +116,12 @@
 			push.on('registration', function(data) {
 				deviceId = data.registrationId;
 				alert('id:' +  deviceId );	
-				getPosition();				
+				getLanguage();				
 			}); 
 			
 			push.on('error', function(e) {
 				notificationFlag = false;
-				getPosition();
+				getLanguage();
 			}); 
 
 			push.on('notification', function(data) {
@@ -159,7 +148,7 @@
 		
 		function onResume() {
 			// Handle the resume event			
-			getPosition();
+			getLanguage();
 		}
 		function doWhenOnline(){
 			document.getElementById('offline-screen').style.display = 'none';
