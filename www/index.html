@@ -60,7 +60,7 @@
 		// Initialize local vars
 		var deviceId;
 		var flag = true;
-		//var notificationFlag = true;
+		var notificationFlag = true;
 		
 		document.getElementById('offline-screen').style.height = document.body.clientHeight+'px';
 		document.addEventListener("deviceready",onDeviceReady,false);
@@ -82,7 +82,7 @@
 		window.addEventListener("message", receiveMessage, false);
 
 		function checkLanguage() {
-		alert('get language');
+				alert('get language');
 	
 			   navigator.globalization.getPreferredLanguage(onSuccess, onError);
 
@@ -109,7 +109,7 @@
 
 		function onDeviceReady(){
 			alert('baal');
-			
+			checkLanguage();
 			document.addEventListener("resume", onResume, false);
 			
 			var push = PushNotification.init({ "android": {"senderID": "114063791200"},
