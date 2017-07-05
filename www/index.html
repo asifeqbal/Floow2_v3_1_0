@@ -81,7 +81,7 @@
 
 		window.addEventListener("message", receiveMessage, false);
 
-		function getLanguage() {
+		function checkLanguage() {
 		alert('get language');
 	
 			   navigator.globalization.getPreferredLanguage(onSuccess, onError);
@@ -118,12 +118,12 @@
 			push.on('registration', function(data) {
 				deviceId = data.registrationId;
 				alert('id:' +  deviceId );	
-				getLanguage();				
+				checkLanguage();				
 			}); 
 			
 			push.on('error', function(e) {
 				notificationFlag = false;
-				getLanguage();
+				checkLanguage();
 			}); 
 
 			push.on('notification', function(data) {
@@ -150,7 +150,7 @@
 		
 		function onResume() {
 			// Handle the resume event			
-			getLanguage();
+			checkLanguage();
 		}
 		function doWhenOnline(){
 			document.getElementById('offline-screen').style.display = 'none';
