@@ -42,8 +42,8 @@
     <style>
 		html, body{width:100%; height:100%;}
 		body{margin:0; padding:0;}
-		#blanker{background-image:url('loader.gif'); background-repeat:no-repeat; background-position: center center; display:block; z-index:9998; background-size:150px; position:fixed; top:0;left:0; height:100%; width:100%; background-color:#12ccb4;}
-		#offline-screen{width:100%; height:130%; background:url('connectionlost.png') no-repeat center center; background-color: #12CCB4; background-size:contain; display:none; z-index:9999; position:fixed; top:0; left:0;}
+		#blanker{width:100%; height:100%; left:0; top:0; background:url('loader.gif') no-repeat center center; display:none; z-index:1000; position:absolute;}
+        #offline-screen{width:100%; height:100%; background:url('connectionlost.png') no-repeat center center; background-size:contain; display:none; z-index:9999; position:fixed; top:0; left:0;}
 	</style>
 </head>
 
@@ -83,18 +83,19 @@
 
 		function checkLanguage() {
 
-            alert('checkLanguage');
+          //  alert('checkLanguage');
+		  alert('id:' +  deviceId );
             navigator.globalization.getPreferredLanguage(function (language) {
              var lang = language.value;
              var res = lang.split("-");
-             //alert(''+res[0]);
+             alert(''+res[0]);
              if(res[0] == 'en'){
               //alert('if working');
-             document.getElementById('container-frame').src = 'http://www.floow2.com/fl2-en-mobile.html';
+             document.getElementById('container-frame').src = 'http://www.floow2.com/fl2-en-mobile.html?id=android&devId='+deviceId;';
              }
              else{
                 //  alert('else working');
-                document.getElementById('container-frame').src = 'http://www.floow2.com/floow2-nl-mobiel.html';
+                document.getElementById('container-frame').src = 'http://www.floow2.com/floow2-nl-mobiel.html?id=android&devId='+deviceId;';
                 }
             },
               function () {alert('Error getting language\n');}
@@ -103,7 +104,7 @@
 		
 
 		function onDeviceReady(){
-			alert('baaaa');
+		//	alert('baaaa');
 			
 			document.addEventListener("resume", onResume, false);
 			
@@ -112,7 +113,7 @@
 
 			push.on('registration', function(data) {
 				deviceId = data.registrationId;
-				alert('id:' +  deviceId );	
+			//	alert('id:' +  deviceId );	
 				checkLanguage();				
 			}); 
 			
