@@ -80,23 +80,27 @@
              var res = lang.split("-");
              alert(''+res[0]);
              if(res[0] == 'en'){
-            //  alert('if working');
+              alert('if working');
 			//  alert('checkLanguage' +  deviceId );
-				document.getElementById('container-frame').src = 'http://www.floow2.com/fl2-en-mobile.html?devType=ios&deviceId='+deviceId;
+				document.getElementById('container-frame').src = 'http://www.floow2.com/fl2-en-mobile.html?devType=android&deviceId='+deviceId;
 				
              }
              else{
-             //    alert('else working');
-                document.getElementById('container-frame').src = 'http://www.floow2.com/floow2-nl-mobiel.html';
+                 alert('else working');
+                document.getElementById('container-frame').src = 'http://www.floow2.com/floow2-nl-mobiel.html?devType=android&deviceId='+deviceId;
                 }
             },
-              function () {alert('Error getting language\n');}
+              function () {
+					alert('Error getting language\n');
+					document.getElementById('container-frame').src = 'http://www.floow2.com/fl2-en-mobile.html';
+					
+			  }
           );
         }
 		
 
 		function onDeviceReady(){
-		//	alert('Hello Floow2');
+			alert('Hello Floow2');
 			
 			document.addEventListener("resume", onResume, false);
 			
